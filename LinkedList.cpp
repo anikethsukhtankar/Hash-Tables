@@ -2,7 +2,7 @@
 //  LinkedList.cpp
 //  HashTable
 //
-//  Created by Shailee Desai on October 11, 2016.
+//  Created by Aniketh Sukhtankar on October 11, 2016.
 //
 //  This header file contains the Linked List class declaration.
 //  Hash Table array elements consist of Linked List objects.
