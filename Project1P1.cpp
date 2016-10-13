@@ -2,7 +2,7 @@
 //  main.cpp
 //  HashTable
 //
-//  Created by Shailee Desai on October 11, 2016.
+//  Created by Aniketh Sukhtankar on October 11, 2016.
 //  Demonstrate a simple Hash Table in C++.
 //  Implements a Linked List class.
 //**************************************************************
@@ -17,6 +17,7 @@
 #include <string>
 #include <deque>
 #include <vector>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -25,7 +26,6 @@ void printMenu();
 int main()
 {
     // local variables, can be accessed anywhere from the main method
-       char input1 = 'Z';
        string inputInfo;
 
        string discipline, gender, isTeam, event, venue, medal, athlete, country, itemKey;
@@ -44,9 +44,9 @@ int main()
 
        while(line!="InsertionEnd"){
             getline(cin, line);
-            std::istringstream ss(line);
-            std::string token;
-            std::string athleteData[7];
+            istringstream ss(line);
+            string token;
+            string athleteData[8];
             int i =0;
             if(line!="InsertionEnd" && line!=""){
                 while(std::getline(ss, token, ',')) {
@@ -55,7 +55,20 @@ int main()
                     //std::cout << athleteData[i] << '\n'; Debug
                     i=i+1;
                 }
-                Item * A = new Item {athleteData[0]+athleteData[1]+athleteData[3]+athleteData[6],athleteData[0],athleteData[1],athleteData[2],athleteData[3],athleteData[4],athleteData[5],athleteData[6],athleteData[7], NULL};
+                //struct Item* A = (struct Item*) malloc(sizeof(struct Item));
+                Item*A=new Item();
+                A->key  = athleteData[0]+athleteData[1]+athleteData[3]+athleteData[6];
+                A->discipline  = athleteData[0];
+                A->gender  = athleteData[1];
+                A->isTeam  = athleteData[2];
+                A->event  = athleteData[3];
+                A->venue  = athleteData[4];
+                A->medal  = athleteData[5];
+                A->athlete  = athleteData[6];
+                A->country  = athleteData[7];
+                A->next =  NULL;
+
+                //Item * A = new Item{athleteData[0]+athleteData[1]+athleteData[3]+athleteData[6],athleteData[0],athleteData[1],athleteData[2],athleteData[3],athleteData[4],athleteData[5],athleteData[6],athleteData[7], NULL};
                 table.insertItem(A);
             }
        };
@@ -68,9 +81,9 @@ int main()
             printMenu();
             cout << "Please Enter A Command:\n";
             getline(cin, line);
-            std::istringstream ss(line);
-            std::string token;
-            std::string commandLine[4];
+            istringstream ss(line);
+            string token;
+            string commandLine[5];
             int i =0;
             while(std::getline(ss, token, ',')) {
                     //std::cout << token << '\n'; Debug
